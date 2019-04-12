@@ -23,9 +23,20 @@ class App extends Component {
     this.props.fetchSmurfs();
   }
 
+  // invoking the addSmurf function and pass in this.state.newSmurf. That's the connection between this component state and the redux store state.  
+
   // input field handleChanges event handler
+  handleChanges = e => {
+    this.setState({
+      newSmurf: {
+        ...this.state.newSmurf,
+        [e.target.name]: e.target.value
+      }
+    });
+  };
 
   // onSubmit event handler
+  
 
 
   render() {
@@ -52,9 +63,33 @@ class App extends Component {
               </div>
             )
           } )}
-        
+        {/* Add Smurf Form could be a different page. If so, need Route and Link components */}
         <div>
-          {/* ADD NEW SMURF FORM */}
+          <h3>Add a New Smurf to the Village Here:</h3>
+          <form onSubmit={this.submitForm}>
+            <input 
+              type="string"
+              name="name"
+              value={this.state.newSmurf.name}
+              placeholder="What's their name?"
+              onChange={this.handleChanges}
+            />
+            <input 
+              type="number"
+              name="age"
+              value={this.state.newSmurf.age}
+              placeholder="How old are they?"
+              onChange={this.handleChanges}
+            />
+            <input 
+              type="string"
+              name="height"
+              value={this.state.newSmurf.height}
+              placeholder="How short are they?"
+              onChange={this.handleChanges}
+            />
+            <button>Add Smurf</button>
+          </form>
         </div>
       </div>
     );
