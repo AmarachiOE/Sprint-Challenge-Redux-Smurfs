@@ -45,6 +45,8 @@ class App extends Component {
     }); 
   };
 
+  // onClick event handler -- invoke deleteSmurf function here
+
   render() {
     // conditional rendering if fetchingSmurfs is true
     if (this.props.fetchingSmurfs) {
@@ -66,8 +68,10 @@ class App extends Component {
                 <div key={index} className="each-smurf">
                   <h3>
                     {smurf.name}, {smurf.age}
+                    <i class="fas fa-trash-alt delete-icon" />
                   </h3>
                   <p>{smurf.height} short</p>
+
                 </div>
               );
             })}

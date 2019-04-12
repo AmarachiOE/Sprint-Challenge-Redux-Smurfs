@@ -99,6 +99,28 @@ input {
   border-radius: 5px;
 }
 
+.each-smurf .delete-icon {
+  color: navy;
+  /* width: 220px; */
+  /* height: 50px; */
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  margin-left: 15px;
+}
+.each-smurf .delete-icon:hover {
+  transform: scale(0.97);
+  color: chocolate;
+  cursor: pointer;
+}
+
+/* to align smurf name and trash icon */
+.each-smurf h3 {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
+
 /* ADD SMURF FORM */
 .SmurfForm-container {
   margin-top: 3%;
