@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 
-import { fetchSmurfs } from "../actions";
+import { fetchSmurfs, addSmurf } from "../actions";
 import './App.css';
 /*
  to wire this component up you're going to need a few things.
@@ -20,6 +20,7 @@ class App extends Component {
   };
 
   componentDidMount() {
+    // invoke fetchSmurfs function here
     this.props.fetchSmurfs();
   }
 
@@ -35,8 +36,19 @@ class App extends Component {
     });
   };
 
-  // onSubmit event handler
-  
+  // onSubmit event handler -- invoke addSmurf function here
+  submitForm = e => {
+    e.preventDefault();
+    this.props.addSmurf(this.state.newSmurf);
+    this.setState({
+      newSmurf: {
+        name: "",
+        age: "",
+        height: ""
+    }
+  })
+}
+
 
 
   render() {
@@ -101,4 +113,4 @@ const mapStateToProps = state => ({
   fetchingSmurfs: state.fetchingSmurfs,
 })
 
-export default connect(mapStateToProps, { fetchSmurfs })(App);
+export default connect(mapStateToProps, { fetchSmurfs, addSmurf })(App);

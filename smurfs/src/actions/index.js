@@ -42,13 +42,13 @@ export const fetchSmurfs = () => dispatch => {
 export const addSmurf = newSmurf => dispatch => {
   dispatch({ type: ADD_SMURF_START });
   axios
-    .post("http://localhost:3333/post", newSmurf)
+    .post("http://localhost:3333/smurfs", newSmurf)
     .then(res => {
       console.log("POST REQ APPROVED!", newSmurf, res.data);
       dispatch({ type: ADD_SMURF_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      console.log("SORRY! Can't add smurf.", err.response);
+      console.log("SORRY! Can't add smurf.", err);
       dispatch({ type: ADD_SMURF_FAILURE, payload: err.response });
     });
 };
