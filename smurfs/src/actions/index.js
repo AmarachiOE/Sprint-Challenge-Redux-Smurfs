@@ -4,9 +4,16 @@ import axios from "axios";
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
 */
+// GETTING SMURF DATA
 export const FETCH_SMURFS_START = "FETCH_SMURFS_START";
 export const FETCH_SMURFS_SUCCESS = "FETCH_SMURFS_SUCCESS";
 export const FETCH_SMURFS_FAILURE = "FETCH_SMURFS_FAILURE";
+
+// ADD NEW SMURF TO DATA
+export const ADD_SMURF_START = "ADD_SMURF_START";
+export const ADD_SMURF_SUCCESS = "ADD_SMURF_SUCCESS";
+export const ADD_SMURF_FAILURE = "ADD_SMURF_FAILURE";
+
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.
@@ -20,19 +27,28 @@ export const FETCH_SMURFS_FAILURE = "FETCH_SMURFS_FAILURE";
 
 export const fetchSmurfs = () => dispatch => {
   dispatch({ type: FETCH_SMURFS_START });
-  axios.get("http://localhost:3333/smurfs")
-  .then( res => {
-    console.log("GET REQ APPROVED", res.data);
-    dispatch({ 
-      type: FETCH_SMURFS_SUCCESS,
-      payload: res.data
-     });
-  })
-  .catch( err => {
-    console.log("GET REQ REJECTED", err.response);
-    dispatch({
-      type: FETCH_SMURFS_FAILURE,
-      payload: err.response
+  axios
+    .get("http://localhost:3333/smurfs")
+    .then(res => {
+      console.log("GET REQ APPROVED!", res.data);
+      dispatch({ type: FETCH_SMURFS_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      console.log("GET REQ REJECTED", err.response);
+      dispatch({ type: FETCH_SMURFS_FAILURE, payload: err.response });
     });
-  })
+};
+
+export const addSmurf = newSmurf => dispatch => {
+  dispatch({ type: ADD_SMURF_START });
+  axios
+    .post("http://localhost:3333/post", newSmurf)
+    .then(res => {
+      console.log("POST REQ APPROVED!", newSmurf, res.data);
+      dispatch({ type: ADD_SMURF_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      console.log("SORRY! Can't add smurf.", err.response);
+      dispatch({ type: ADD_SMURF_FAILURE, payload: err.response });
+    });
 };
