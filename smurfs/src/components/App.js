@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+
+import { fetchSmurfs } from "../actions";
 import './App.css';
 /*
  to wire this component up you're going to need a few things.
@@ -16,6 +18,10 @@ class App extends Component {
       // don't need id field
     }
   };
+
+  componentDidMount() {
+    this.props.fetchSmurfs();
+  }
 
   // input field handleChanges event handler
 
@@ -44,4 +50,4 @@ const mapStateToProps = state => ({
   smurfs: state.smurfs
 })
 
-export default connect(mapStateToProps, {})(App);
+export default connect(mapStateToProps, { fetchSmurfs })(App);
