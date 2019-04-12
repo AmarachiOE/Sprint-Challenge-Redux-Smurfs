@@ -92,7 +92,7 @@ input {
 
 .each-smurf {
   width: 45%;
-  min-width: 100px;
+  min-width: 200px;
   height: auto;
   margin: 1%;
   background: yellow;

@@ -46,12 +46,13 @@ class App extends Component {
   };
 
   // onClick event handler -- invoke deleteSmurf function here
-  deleteSmurf = e => {
-    e.preventDefault();
-    if (window.confirm(`Are you sure you want to delete ${this.props.smurf.name}`)) {
-    this.props.deleteSmurf(this.props.smurf.id);
-    }
-  }
+  handleDeleteSmurf = id => {
+    //e.preventDefault();
+    this.props.deleteSmurf(id);
+    // if (window.confirm(`Are you sure you want to delete ${this.props.smurf.name}`)) {
+    // this.props.deleteSmurf(this.props.smurf.id);
+    // }
+  };
 
   render() {
     // conditional rendering if fetchingSmurfs is true
@@ -69,12 +70,12 @@ class App extends Component {
         <div className="container Smurfs-container">
           <h1>SMURF VILLAGE</h1>
           <div className="smurf-list">
-            {this.props.smurfs.map((smurf, index) => {
+            {this.props.smurfs.map(smurf => {
               return (
-                <div key={index} className="each-smurf">
+                <div key={smurf.id} className="each-smurf">
                   <h3>
                     {smurf.name}, {smurf.age}
-                    <i onClick={this.deleteSmurf} className="fas fa-trash-alt delete-icon" />
+                    <i onClick={() => this.handleDeleteSmurf(smurf.id)}className="fas fa-trash-alt delete-icon" />
                   </h3>
                   <p>{smurf.height} short</p>
 
