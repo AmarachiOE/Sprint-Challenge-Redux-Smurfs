@@ -1,28 +1,181 @@
-.App {
+
+/* FETCHING DATA */
+.fetching-state-container{
+  margin: 20% auto 0;
+  width: 50%;
+}
+.fetching-state-container .fetching-text {
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
+.fetching-animation {
+  animation: App-logo-spin infinite 5s linear; 
 }
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+/* APP */
+
+.App {
+  /* text-align: center; */
+  background: linear-gradient(-100deg, #0a0946 30%, yellow 20%, rgba(0, 0, 0, 0) 30%), url("../images/smurf-cartoon.jpg");
+  background-attachment: fixed;
+  padding: 40px 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+}
+
+
+/* GENERAL  STYLING */
+
+.container {
+  background: white;
+  margin: 0 auto;
+  width: 50%;
+  border-radius: 10px;
+  padding: 0 2% 5%;
+
+}
+
+h1 {
+  font-family:'Luckiest Guy', sans-serif;
+  font-size: 4rem;
+}
+h2 {
+  font-size: 2.2rem;
+}
+
+h3 {
+  font-family: 'Gloria Hallelujah', sans-serif;
+  font-weight: 30px;
+  font-size: 1.7rem;
+}
+
+p, a {
+  font-size: 1.2rem;
+}
+
+input {
+  font-family: 'Gloria Hallelujah', sans-serif;
+
+}
+
+/* SMURF VILLAGE CONTAINER */
+
+.Smurfs-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.Smurfs-container h1 {
+  background: red;
+  width: 100%;
+  height: 5rem;
+  padding-top: 40px;
+  border-radius: 10px;
+  color: rgb(255, 251, 24);
+  text-shadow: 6px 6px navy;
+}
+
+.Smurfs-container .smurf-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.each-smurf {
+  /* width: 48%; */
+  /* no width but padding creates different sized boxes for each smurf added to village */
+  padding: 0 20px;
+  height: auto;
+  margin: 1%;
+  background: yellow;
+  box-shadow: 2px 4px 1px chocolate;
+  border-radius: 5px;
+  /* border: 1px solid red; */
+}
+
+.each-smurf .delete-icon {
+  color: navy;
+  /* width: 220px; */
+  /* height: 50px; */
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  margin-left: 15px;
+}
+.each-smurf .delete-icon:hover {
+  transform: scale(0.97);
+  color: chocolate;
+  cursor: pointer;
+}
+
+/* to align smurf name and trash icon */
+.each-smurf h3 {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
+
+/* ADD SMURF FORM */
+.SmurfForm-container {
+  margin-top: 3%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.SmurfForm-container h2 {
+  /* background: red; */
+  width: 100%;
+  font-weight: bold;
+  /* padding-top: 40px; */
+  border-radius: 10px;
+  color: navy;
+  /* text-shadow: 6px 6px chocolate; */
+}
+
+.SmurfForm-container .SmurfForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.SmurfForm-container .SmurfForm input {
+  margin-bottom: 20px;
+  border: none;
+  width: 300px;
+  height: 40px;
+  background: rgb(236, 236, 236);
+  box-shadow: 2px 3px 3px rgb(184, 183, 183);
+  border-radius: 5px;
+  padding-left: 12px;
+  font-size: 1.1rem;
+  /* border: 1px solid red; */
+}
+
+.SmurfForm-container .SmurfForm .form-btn {
+  color: navy;
+  width: 220px;
+  height: 50px;
+  background: lightskyblue;
+  border-radius: 5px;
+  box-shadow: 2px 3px 0px rgb(57, 86, 104);
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.SmurfForm-container .SmurfForm .form-btn:hover {
+  transform: scale(0.97);
+  background: chocolate;
+  cursor: pointer;
 }
