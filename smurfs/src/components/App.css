@@ -92,11 +92,13 @@ input {
 
 .each-smurf {
   width: 45%;
+  min-width: 100px;
   height: auto;
   margin: 1%;
   background: yellow;
   box-shadow: 2px 4px 1px chocolate;
   border-radius: 5px;
+  /* border: 1px solid red; */
 }
 
 .each-smurf .delete-icon {

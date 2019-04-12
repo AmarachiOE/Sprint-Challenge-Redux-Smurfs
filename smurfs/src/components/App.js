@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchSmurfs, addSmurf } from "../actions";
+import { fetchSmurfs, addSmurf, deleteSmurf } from "../actions";
 import Loader from 'react-loader-spinner';
 import "./App.css";
 
@@ -46,6 +46,12 @@ class App extends Component {
   };
 
   // onClick event handler -- invoke deleteSmurf function here
+  deleteSmurf = e => {
+    e.preventDefault();
+    if (window.confirm(`Are you sure you want to delete ${this.props.smurf.name}`)) {
+    this.props.deleteSmurf(this.props.smurf.id);
+    }
+  }
 
   render() {
     // conditional rendering if fetchingSmurfs is true
@@ -68,7 +74,7 @@ class App extends Component {
                 <div key={index} className="each-smurf">
                   <h3>
                     {smurf.name}, {smurf.age}
-                    <i class="fas fa-trash-alt delete-icon" />
+                    <i onClick={this.deleteSmurf} className="fas fa-trash-alt delete-icon" />
                   </h3>
                   <p>{smurf.height} short</p>
 
@@ -117,5 +123,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { fetchSmurfs, addSmurf }
+  { fetchSmurfs, addSmurf, deleteSmurf }
 )(App);
