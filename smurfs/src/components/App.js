@@ -35,9 +35,16 @@ class App extends Component {
         <div>Welcome to your Redux version of Smurfs!</div>
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
-        <div>
-          {/* MAP OVER SMURFS */}
-        </div>
+        
+          {this.props.smurfs.map( smurf => {
+            return (
+              <div>
+                <h3>{smurf.name}, {smurf.age}</h3>
+                <p>{smurf.height} short</p>
+              </div>
+            )
+          } )}
+        
         <div>
           {/* ADD NEW SMURF FORM */}
         </div>
@@ -47,7 +54,8 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-  smurfs: state.smurfs
+  smurfs: state.smurfs,
+  fetchingSmurfs: state.fetchingSmurfs,
 })
 
 export default connect(mapStateToProps, { fetchSmurfs })(App);
