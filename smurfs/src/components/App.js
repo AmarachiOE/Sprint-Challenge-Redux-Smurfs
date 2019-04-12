@@ -29,6 +29,14 @@ class App extends Component {
 
 
   render() {
+    // conditional rendering if fetchingSmurfs is true
+    if (this.props.fetchingSmurfs) {
+      return (
+        <div>
+          <h1>One moment please...</h1>
+        </div>
+      );
+    }
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
