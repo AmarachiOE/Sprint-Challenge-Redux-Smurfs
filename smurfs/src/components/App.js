@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchSmurfs, addSmurf } from "../actions";
+import Loader from 'react-loader-spinner';
 import "./App.css";
 
 class App extends Component {
@@ -48,28 +49,34 @@ class App extends Component {
     // conditional rendering if fetchingSmurfs is true
     if (this.props.fetchingSmurfs) {
       return (
-        <div>
-          <h1>One moment please...</h1>
+        // <Loader type="ThreeDots" color="blue" height={100} width={100} />
+        <div className="fetching-state-container">
+        <h1 className="fetching-animation">.</h1>
+        <h1 className="fetching-text">One moment please...</h1>
         </div>
       );
     }
     return (
       <div className="App">
-        <h1>SMURF VILLAGE</h1>
-        {this.props.smurfs.map((smurf, index) => {
-          return (
-            <div key={index}>
-              <h3>
-                {smurf.name}, {smurf.age}
-              </h3>
-              <p>{smurf.height} short</p>
-            </div>
-          );
-        })}
+        <div className="container Smurfs-container">
+          <h1>SMURF VILLAGE</h1>
+          <div className="smurf-list">
+            {this.props.smurfs.map((smurf, index) => {
+              return (
+                <div key={index} className="each-smurf">
+                  <h3>
+                    {smurf.name}, {smurf.age}
+                  </h3>
+                  <p>{smurf.height} short</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
         {/* Add Smurf Form could be a different page. If so, need Route and Link components */}
-        <div>
-          <h3>Add a New Smurf to the Village Here:</h3>
-          <form onSubmit={this.submitForm}>
+        <div className="container SmurfForm-container">
+          <h2>Add a New Smurf</h2>
+          <form className="SmurfForm" onSubmit={this.submitForm}>
             <input
               type="string"
               name="name"
@@ -91,7 +98,7 @@ class App extends Component {
               placeholder="How short are they?"
               onChange={this.handleChanges}
             />
-            <button>Add Smurf</button>
+            <button className="form-btn">Add Smurf</button>
           </form>
         </div>
       </div>
