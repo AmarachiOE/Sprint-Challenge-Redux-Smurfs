@@ -56,13 +56,14 @@ export const addSmurf = newSmurf => dispatch => {
 
 export const deleteSmurf = id => dispatch => {
   dispatch({ type: DELETE_SMURF_START });
-  axios.delete(`http://localhost:3333/smurfs/${id}`)
-  .then( res => {
-    console.log("DELETE REQ APPROVED!", id, res.data);
-    dispatch({ type: DELETE_SMURF_SUCCESS, payload: res.data});
-  })
-  .catch(err => {
-    console.log("SORRY! Can't delete smurf.", err);
-    dispatch({ type: DELETE_SMURF_FAILURE, payload: err.response});
-  });
+  axios
+    .delete(`http://localhost:3333/smurfs/${id}`)
+    .then(res => {
+      console.log("DELETE REQ APPROVED!", id, res.data);
+      dispatch({ type: DELETE_SMURF_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      console.log("SORRY! Can't delete smurf.", err);
+      dispatch({ type: DELETE_SMURF_FAILURE, payload: err.response });
+    });
 };

@@ -91,8 +91,9 @@ input {
 }
 
 .each-smurf {
-  width: 45%;
-  min-width: 200px;
+  /* width: 48%; */
+  /* no width but padding creates different sized boxes for each smurf added to village */
+  padding: 0 20px;
   height: auto;
   margin: 1%;
   background: yellow;

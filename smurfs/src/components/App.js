@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchSmurfs, addSmurf, deleteSmurf } from "../actions";
-import Loader from 'react-loader-spinner';
+import Loader from "react-loader-spinner";
 import "./App.css";
 
 class App extends Component {
@@ -42,16 +42,15 @@ class App extends Component {
         age: "",
         height: ""
       }
-    }); 
+    });
   };
 
   // onClick event handler -- invoke deleteSmurf function here
   handleDeleteSmurf = id => {
-    //e.preventDefault();
-    this.props.deleteSmurf(id);
-    // if (window.confirm(`Are you sure you want to delete ${this.props.smurf.name}`)) {
-    // this.props.deleteSmurf(this.props.smurf.id);
-    // }
+    //this.props.deleteSmurf(id);
+    if (window.confirm("Are you sure you want to delete this smurf?")) {
+      this.props.deleteSmurf(id);
+    }
   };
 
   render() {
@@ -60,8 +59,8 @@ class App extends Component {
       return (
         // <Loader type="ThreeDots" color="blue" height={100} width={100} />
         <div className="fetching-state-container">
-        <h1 className="fetching-animation">.</h1>
-        <h1 className="fetching-text">One moment please...</h1>
+          <h1 className="fetching-animation">.</h1>
+          <h1 className="fetching-text">One moment please...</h1>
         </div>
       );
     }
@@ -75,10 +74,12 @@ class App extends Component {
                 <div key={smurf.id} className="each-smurf">
                   <h3>
                     {smurf.name}, {smurf.age}
-                    <i onClick={() => this.handleDeleteSmurf(smurf.id)}className="fas fa-trash-alt delete-icon" />
+                    <i
+                      onClick={() => this.handleDeleteSmurf(smurf.id)}
+                      className="fas fa-trash-alt delete-icon"
+                    />
                   </h3>
                   <p>{smurf.height} short</p>
-
                 </div>
               );
             })}
